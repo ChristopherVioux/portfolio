@@ -19,6 +19,6 @@ export default defineComponent({
 <style scoped>
 .home {
   height: 100vh;
-  background: #42b983;
+  background: #fcfcfc;
 }
 </style>
