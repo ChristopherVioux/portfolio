@@ -1,17 +1,26 @@
 <template>
-  <nav class="navbar">
-    <router-link class="nav" to="/">Home</router-link> |
-    <router-link class="nav" to="/about">About</router-link> |
-    <router-link class="nav" to="/skills">Contact</router-link> |
-  </nav>
-  <template class="main">
-    <div class="section intro">
-      <div>{{ welcome }}</div>
-      <div>{{ presentation }}</div>
-      <div>{{ introduction }}</div>
+  <v-container style="display:flex; flex-direction:column">
+    <nav class="navbar">
+      <router-link class="nav" to="/skills">Contact</router-link>
+    </nav>
+    <template class="main">
+    <div class="intro">
+      <div style="font-size:5.5em;margin-left:-5px;">{{ welcome }}</div>
+      <div style="font-size:2.5em;">{{ presentation }}</div>
+      <div style="font-size:2em;margin-top:5px;">{{ introduction }}</div>
     </div>
-    <div style="background-color:#5ca3c7;" class="section">
-      <div>
+    <div class="section">
+      <div style="font-size: 1.5em;font-weight: bold;">
+        {{ projects }}
+      </div>
+      <div class="projectList">
+        <div class="project"></div>
+        <div class="project"></div>
+        <div class="project"></div>
+      </div>
+    </div>
+    <div style="background-color:#4d3872;" class="section">
+      <div style="font-size: 1.5em;font-weight: bold;">
         {{ skills }}
       </div>
       <div class="skills">
@@ -38,11 +47,11 @@
             <img class="icon" src='@/assets/git.png' alt="Git">
             <img class="icon" src='@/assets/vscode.png' alt="VSCode">
           </div>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="section">Projets</div>
-  </template>
+    </template>
+  </v-container>
 </template>
 
 <script lang="ts">
@@ -51,13 +60,14 @@ import { defineComponent } from 'vue';
 export default defineComponent({
   data() {
     return {
-      welcome: 'Hi ! I\'m',
-      presentation: 'Christopher Vioux',
-      introduction: 'I\'m a web developer, I love to code and I like to build websites.',
+      welcome: 'Hello and welcome !',
+      presentation: 'I\'m Christopher',
+      introduction: 'I\'m a web developer, I love to code and build websites !',
       skills: 'Skills',
       front: 'Front-End',
       back: 'Back-End',
       tools: 'Tools',
+      projects: 'Here some projects I work on',
     };
   },
   name: 'HelloWorld',
@@ -69,34 +79,36 @@ export default defineComponent({
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-.hello {
-  height: 100%;
-  background: #b98942;
-}
 .navbar {
-  background-color: #362B00;
+  background-color: #0A001B;
+  display: flex;
+  justify-content: flex-end;
 }
 .nav {
-  color: #F6EEB4;
+  color: #fffdec;
 }
 .main {
-  color: #F6EEB4;
-  height: 100%;
-  background-color:#197CAE;
+  color: #ededed;
+  height: 95%;
+  width: 100%;
+  background-color:#0A001B;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 .section {
-  height: 40%;
+  width:100%;
   display: flex;
   flex-direction: column;
 }
 .intro {
+  width:100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  margin:250px 0 430px 150px;
+  align-items: start;
 }
 ul {
   list-style-type: none;
@@ -110,7 +122,7 @@ a {
   color: #42b983;
 }
 .skills {
-  width: 100vw;
+  width:100%;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -153,6 +165,23 @@ a {
   height: 70px;
 }
 .vuetifyicon {
-  height:60px;margin-top:5px;
+  height:60px;
+  margin-top:5px;
+}
+.projectList {
+  width: 100%;
+  height: 500px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  margin-top:60px;
+}
+.project {
+  width: 20%;
+  height: 85%;
+  background-color: #fffdec;
+  border-radius: 5%;;
 }
 </style>
