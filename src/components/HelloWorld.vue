@@ -1,7 +1,7 @@
 <template>
-  <v-container style="display:flex; flex-direction:column">
+  <v-container style="display:flex; flex-direction:column; overflow-x:hidden;">
     <nav class="navbar">
-      <router-link class="nav" to="/skills">Contact</router-link>
+      <router-link class="nav" to="/contact">Contact</router-link>
     </nav>
     <template class="main">
     <div class="intro">
@@ -14,18 +14,20 @@
         {{ projects }}
       </div>
       <div class="projectList">
-        <div class="project"></div>
-        <div class="project"></div>
-        <div class="project"></div>
+        <div v-for="project in projectArray" :key="project.id" >
+          <div class="project">
+            <img src="@/assets/Under.jpg" alt="vue" style="height:300px; width:auto;">
+          </div>
+        </div>
       </div>
     </div>
-    <div style="background-color:#4d3872;" class="section">
+    <div class="section skillSection">
       <div style="font-size: 1.5em;font-weight: bold;">
         {{ skills }}
       </div>
       <div class="skills">
         <div class="details">
-          <v-text-field>{{ front }}</v-text-field>
+          <v-text-field style="font-weight:bold;">{{ front }}</v-text-field>
           <div class="front" alt="front">
             <img class="icon" src='@/assets/Vue.png' alt="Vue">
             <img class="icon" src='@/assets/vuetify.png' alt="Vuetify">
@@ -33,7 +35,7 @@
           </div>
         </div>
         <div class="details">
-          <v-text-field>{{ back }}</v-text-field>
+          <v-text-field style="font-weight:bold;">{{ back }}</v-text-field>
           <div class="back" alt="back">
             <img class="icon" src='@/assets/mysql.png' alt="MySql">
             <img class="icon" src='@/assets/node.png' alt="NodeJs">
@@ -41,7 +43,7 @@
           </div>
         </div>
         <div class="details">
-          <v-text-field>{{ tools }}</v-text-field>
+          <v-text-field style="font-weight:bold;">{{ tools }}</v-text-field>
           <div class="tools" alt="">
             <img class="icon" src='@/assets/github.png' alt="Github">
             <img class="icon" src='@/assets/git.png' alt="Git">
@@ -67,6 +69,11 @@ export default defineComponent({
       front: 'Front-End',
       back: 'Back-End',
       tools: 'Tools',
+      projectArray: [
+        { id: 1, name: 'Work in progress ...', img: '@/assets/vue.png' },
+        { id: 2, name: 'Work in progress ...', img: '@/assets/vue.png' },
+        { id: 3, name: 'Work in progress ...', img: '@/assets/vue.png' },
+      ],
       projects: 'Here some projects I work on',
     };
   },
@@ -123,6 +130,7 @@ a {
 }
 .skills {
   width:100%;
+  height: 30%;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -169,8 +177,8 @@ a {
   margin-top:5px;
 }
 .projectList {
-  width: 100%;
-  height: 500px;
+  width:100%;
+  height: 400px;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -179,9 +187,15 @@ a {
   margin-top:60px;
 }
 .project {
-  width: 20%;
-  height: 85%;
+  width: 300px;
+  height: 380px;
   background-color: #fffdec;
-  border-radius: 5%;;
+  color: black;
+  border-radius: 10px;
+}
+.skillSection {
+  margin-top:50px;
+  background-color: #fcfcfc;
+  color: black;
 }
 </style>
